@@ -14,6 +14,7 @@ public class WebConfig implements WebMvcConfigurer {
 
     @Override
     public void addCorsMappings(CorsRegistry registry) {
+
         log.info("front url: {}", frontUrl);
         registry.addMapping("/**")
                 .allowedOrigins(frontUrl)
