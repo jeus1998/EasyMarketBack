@@ -1,10 +1,9 @@
-name: Deploy to EC2(front)
+name: Deploy to EC2(back)
 
 on:
   push:
     branches:
       - main
-
 
 jobs:
   deploy:
@@ -67,6 +66,10 @@ jobs:
             
             # 애플리케이션 실행 output.log 로그 기록 
             nohup java -jar back.jar > ./output.log 2>&1 &
+            
+            # 확인: lsof로 8081 포트가 열려 있는지 확인
+            echo "Checking for open ports on 8081:"
+            lsof -i:8081
             
             # 폴더 삭제 
             rm -rf /home/ubuntu/backend-server/tobe
